@@ -20,6 +20,13 @@ Ejercicios:
 # ● eliminar(valor)
 # ● buscar(valor)
 
+# 8. Contar la cantidad de nodos usando recursividad.
+
+# 9. Devolver el valor máximo almacenado.
+
+# 10. Imprimir los valores en orden inverso (usando recursividad).
+
+
 class Nodo:
     
     def __init__(self, carga = None, siguiente = None):
@@ -31,7 +38,9 @@ class Lista_enlazada:
     def __init__(self):
         self.cabeza = None
         self.longitud = 0
-    
+
+
+
     def insertar_al_final(self, carga):
 
         nodo_nuevo = Nodo(carga)
@@ -57,7 +66,9 @@ class Lista_enlazada:
             
             nodo = nodo.siguiente
         # END WHILE
-    
+
+
+
     def eliminar(self, carga):
 
         # BEGIN IF
@@ -112,6 +123,7 @@ class Lista_enlazada:
         # END WHILE
     
 
+
     def buscar(self, carga):
 
         # BEGIN IF
@@ -148,5 +160,27 @@ class Lista_enlazada:
         print('El elemento no existe en la lista.')
         return
 
+
+
+    def cuenta_nodos_recursivo(self):
+        
+        # BEGIN IF
+        if self.longitud == 0:
+            print('Lista vacía')
+            return 0
+        # END IF
+
+
+        # BEGIN FUNCTION
+        def cuenta(nodo):
+            
+            if nodo == None:
+                return 0
+            
+            return cuenta(nodo.siguiente) + 1
+        # END FUNCTION
+
+
+        return cuenta(self.cabeza)
 
 # ---------------------------------------------------------------

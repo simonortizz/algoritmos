@@ -14,19 +14,6 @@ Ejercicios:
 '''
 
 # 6. Implementar clase Nodo y ListaEnlazada.
-
-# 7. Agregar métodos:
-# ● insertar_al_final(valor)
-# ● eliminar(valor)
-# ● buscar(valor)
-
-# 8. Contar la cantidad de nodos usando recursividad.
-
-# 9. Devolver el valor máximo almacenado.
-
-# 10. Imprimir los valores en orden inverso (usando recursividad).
-
-
 class Nodo:
     
     def __init__(self, carga = None, siguiente = None):
@@ -41,6 +28,7 @@ class Lista_enlazada:
 
 
 
+# ● insertar_al_final(valor)
     def insertar_al_final(self, carga):
 
         nodo_nuevo = Nodo(carga)
@@ -69,6 +57,7 @@ class Lista_enlazada:
 
 
 
+# ● eliminar(valor)
     def eliminar(self, carga):
 
         # BEGIN IF
@@ -124,6 +113,7 @@ class Lista_enlazada:
     
 
 
+# ● buscar(valor)
     def buscar(self, carga):
 
         # BEGIN IF
@@ -162,6 +152,7 @@ class Lista_enlazada:
 
 
 
+# 8. Contar la cantidad de nodos usando recursividad.
     def cuenta_nodos_recursivo(self):
         
         # BEGIN IF
@@ -185,6 +176,7 @@ class Lista_enlazada:
 
 
 
+# 9. Devolver el valor máximo almacenado.
     def maximo_almacenado(self):
         
         # BEGIN IF
@@ -217,6 +209,7 @@ class Lista_enlazada:
 
 
 
+# 10. Imprimir los valores en orden inverso (usando recursividad).
     def imprimir_inverso_recursivo(self):
         
         # BEGIN IF

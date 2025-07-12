@@ -62,6 +62,44 @@ class Lista_enlazada:
         if self.cabeza == None:
             print('Lista vacia')
             return 
+        
+        
+        if self.cabeza.carga != carga and self.cabeza.siguiente == None:
+            print('El elemento no está en la lista.')
+            return
+        
+        
+        if self.cabeza.carga == carga and self.cabeza.siguiente == None:
+            print('Elemento eliminado')
+            nodo_eliminado = self.cabeza
+            self.longitud -= 1
+            self.cabeza = None
+            return nodo_eliminado
+        
 
+        nodo = self.cabeza
+        anterior = self.cabeza
+
+
+        if self.cabeza.carga == carga and self.cabeza.siguiente != None:
+            nodo_eliminado = self.cabeza
+            self.cabeza = self.cabeza.siguiente
+            print('Elemento eliminado')
+            return nodo_eliminado
+        
+
+        # BEGIN WHILE
+        while nodo:
+
+            if nodo.carga == carga:
+                anterior.siguiente = nodo.siguiente
+                nodo.siguiente = None
+                self.longitud -= 1
+                print('Carga eliminada.')
+                return nodo
+            
+            anterior = nodo
+            nodo = nodo.siguiente
+        # END WHILE
 
 # ---------------------------------------------------------------

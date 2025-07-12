@@ -59,34 +59,43 @@ class Lista_enlazada:
         # END WHILE
     
     def eliminar(self, carga):
+
+        # BEGIN IF
         if self.cabeza == None:
             print('Lista vacia')
             return 
+        # END IF
         
-        
+
+        # BEGIN IF
         if self.cabeza.carga != carga and self.cabeza.siguiente == None:
             print('El elemento no está en la lista.')
             return
+        #END IF
+
         
-        
+        # BEGIN IF
         if self.cabeza.carga == carga and self.cabeza.siguiente == None:
             print('Elemento eliminado')
             nodo_eliminado = self.cabeza
             self.longitud -= 1
             self.cabeza = None
             return nodo_eliminado
-        
+        # END IF
+
 
         nodo = self.cabeza
         anterior = self.cabeza
 
 
+        # BEGIN IF
         if self.cabeza.carga == carga and self.cabeza.siguiente != None:
             nodo_eliminado = self.cabeza
             self.cabeza = self.cabeza.siguiente
             print('Elemento eliminado')
             return nodo_eliminado
-        
+        # END IF
+
 
         # BEGIN WHILE
         while nodo:
@@ -101,5 +110,43 @@ class Lista_enlazada:
             anterior = nodo
             nodo = nodo.siguiente
         # END WHILE
+    
+
+    def buscar(self, carga):
+
+        # BEGIN IF
+        if self.longitud == 0:
+            print('La lista está vacia.')
+            return
+        # END IF
+        
+
+        # BEGIN IF
+        if self.cabeza.carga == carga:
+            print('El elemento existe y es la cabeza.')
+            return
+        # END IF
+
+
+        nodo = self.cabeza
+
+
+        # BEGIN WHILE
+        while nodo:
+            
+            if nodo.carga == carga and nodo.siguiente == None:
+                print('El elemento existe y es el ultimo.')
+                return
+            
+            if nodo.carga == carga and nodo.siguiente != None:
+                print('El elemento existe y está en el medio.')
+                return
+            
+            nodo = nodo.siguiente
+        # END WHILE
+        
+        print('El elemento no existe en la lista.')
+        return
+
 
 # ---------------------------------------------------------------

@@ -183,4 +183,35 @@ class Lista_enlazada:
 
         return cuenta(self.cabeza)
 
+
+
+    def maximo_almacenado(self):
+        
+        # BEGIN IF
+        if self.longitud == 0:
+            print('Lista vacia')
+            return
+        # END IF
+
+
+        # BEGIN IF
+        if self.cabeza.siguiente == None:
+            return self.cabeza
+        # END IF
+
+        
+        nodo = self.cabeza
+        mayor = self.cabeza.carga
+
+        
+        # BEGIN WHILE
+        while nodo:
+
+            if nodo.carga > mayor:
+                mayor = nodo.carga
+            
+            nodo = nodo.siguiente
+        # END WHILE
+
+        return mayor
 # ---------------------------------------------------------------

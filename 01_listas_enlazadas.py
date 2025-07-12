@@ -214,4 +214,27 @@ class Lista_enlazada:
         # END WHILE
 
         return mayor
-# ---------------------------------------------------------------
+
+
+
+    def imprimir_inverso_recursivo(self):
+        
+        # BEGIN IF
+        if self.longitud == 0:
+            print('Lista vacia')
+            return
+        # END IF
+
+
+        nodo = self.cabeza
+
+        def recursividad(nodo):
+            
+            if nodo == None:
+                return 0
+            
+            recursividad(nodo.siguiente)
+            print(nodo.carga)
+        
+
+        return recursividad(nodo)

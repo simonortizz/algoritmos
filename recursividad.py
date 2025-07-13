@@ -112,3 +112,31 @@ def fibonacci(n):
 
 
 # print(fibonacci(6)) # -> fiboncacci(6 - 1) = 5 + fibonacci(6 - 2) = 3
+
+# ------------------------------------------------------------------------------
+
+# 15. Verificar si una lista es palíndromo usando recursión.
+
+def lista_palindromo(lista):
+
+    if len(lista) == 0:
+        return 'Vacia'
+    
+    
+    def palindromo(lista):
+
+        if len(lista) <= 1:
+            return 'Es palindromo'
+        
+        if lista[0] != lista[-1]:
+            return 'No es palindromo'
+        
+        return palindromo(lista[1:-1])
+
+
+    return palindromo(lista)
+
+
+lista2 = [1, 2, 3, 2, 1]
+
+# print(lista_palindromo(lista2))

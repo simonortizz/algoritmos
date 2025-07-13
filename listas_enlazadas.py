@@ -37,7 +37,6 @@ class Lista_enlazada:
         if self.cabeza == None:
             self.cabeza = nodo_nuevo
             self.longitud += 1
-            print('El nodo es la cabeza y el ultimo.')
             return 
         # END IF
 
@@ -49,7 +48,6 @@ class Lista_enlazada:
             if nodo.siguiente == None:
                 nodo.siguiente = nodo_nuevo
                 self.longitud += 1
-                print('El nodo es el ultimo.')
                 return 
             
             nodo = nodo.siguiente
@@ -231,3 +229,48 @@ class Lista_enlazada:
         
 
         return recursividad(nodo)
+
+
+
+lista = Lista_enlazada()
+
+# # Insertar elementos
+# lista.insertar_al_final(3)
+# lista.insertar_al_final(7)
+# lista.insertar_al_final(2)
+# lista.insertar_al_final(9)
+# lista.insertar_al_final(5)
+
+# print("---- PRUEBA DE MÉTODOS ----")
+
+# # 1. Buscar elementos
+# print("Buscar 7:")
+# lista.buscar(7)  # Debe indicar que existe y está en el medio
+
+# print("Buscar 10:")
+# lista.buscar(10)  # Debe indicar que no existe
+
+# # 2. Contar nodos recursivamente
+# print("Cantidad de nodos:", lista.cuenta_nodos_recursivo())  # Debe ser 5
+
+# # 3. Valor máximo almacenado
+# print("Valor máximo:", lista.maximo_almacenado())  # Debe ser 9
+
+# # 4. Imprimir inverso recursivamente
+# print("Imprimir lista en orden inverso:")
+# lista.imprimir_inverso_recursivo()
+# # Debe imprimir: 5, 9, 2, 7, 3 (cada uno en una línea)
+
+# # 5. Eliminar un elemento y probar si se actualiza
+# print("Eliminar elemento 2:")
+# lista.eliminar(2)  # Debe indicar que se eliminó
+
+# print("Cantidad de nodos después de eliminar:", lista.cuenta_nodos_recursivo())  # Debe ser 4
+
+# print("Buscar 2 después de eliminar:")
+# lista.buscar(2)  # Debe indicar que no existe
+
+# print("Imprimir lista en orden inverso después de eliminar 2:")
+# lista.imprimir_inverso_recursivo()
+# # Debe imprimir: 5, 9, 7, 3
+

@@ -62,7 +62,6 @@ cadena = 'Lionel Messi'
 # -------------------------------------------------------------------------------------
 
 # 18. Validar paréntesis balanceados con pila (ej: "(())()", "((").
-
 def validar_parentisis(cadena):
     
     pila = Pila()
@@ -106,10 +105,49 @@ class Cola:
 
     def desencolar(self):
         return self.elementos.pop(0)
+    
+
+    def cantidad(self):
+        return len(self.elementos)
 
     
     def isEmpty(self):
         return self.elementos == []
 
+# -------------------------------------------------------------------------------------
+
+# 20. Simular atención por turnos en una cola (agregar y quitar elementos FIFO)
+def simulador_turnos():
+
+    cola = Cola()
+
+    opcion = input('Ingrese 1-paciente/2-atendido/3-salir: ')
+
+    while opcion != '3':
 
 
+        # BEGIN IF
+        if opcion == '1':
+
+            paciente = input('Ingrese paciente: ')
+            
+            cola.encolar(paciente)
+
+            opcion = input('Ingrese 1-paciente/2-atender/3-salir: ')
+
+        elif opcion == '2' and not cola.isEmpty():
+
+            atendido = cola.desencolar()
+            print(f'Paciente atendido: {atendido}')
+            print(f'Pacientes esperando: {cola.cantidad()}.')
+
+            opcion = input('Ingrese 1-paciente/2-atendido/3-salir: ')
+        else:
+
+            print('No hay paciente para atender.')
+
+            opcion = input('Ingrese 1-paciente/2-atendido/3-salir: ')
+        # END IF
+
+
+# simulador_turnos()

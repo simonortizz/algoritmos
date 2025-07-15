@@ -13,7 +13,6 @@ Nivel 3:
     Obtener la rama más larga del árbol.
 
 Nivel 4:
-    Modelar árbol genealógico con clases Persona y NodoGenealógico.
     Simulación de estructura de directorios.
 
     
@@ -24,6 +23,8 @@ Nivel 4:
 #   D   E   F
 
 '''
+
+from listas_enlazadas import Lista_enlazada
 
 class Nodo:
 
@@ -52,6 +53,17 @@ arbol = Arbol('A',
                         None, 
                         Arbol('F')))
 
+
+def encontrar_altura(arbol):
+    if arbol == None: return 0
+
+    return max(
+            encontrar_altura(arbol.izquierda), 
+            encontrar_altura(arbol.derecha)
+            ) + 1 # -> + 1 es porque se suma la cabeza de ese arbol
+
+
+# -------------------------------------------------------------------------------------
 
 def inorden_recursivo(nodo):
 
@@ -94,6 +106,117 @@ def nodos_nivel(nodo, nivel=0):
 
     return nodos_nivel(nodo.izquierda, nivel - 1) + nodos_nivel(nodo.derecha, nivel - 1)
 
+# print(nodos_nivel(arbol, 2))
 
 
-print(nodos_nivel(arbol, 2))
+# -------------------------------------------------------------------------------------
+
+def imprime_nivel(nodo, nivel=0):
+
+    # BEGIN IF
+    if nodo is None:
+        return 0
+    # END IF
+
+
+    # BEGIN IF
+    if nivel == 0:
+        print(nodo.carga, end="")
+        return
+    # END IF
+
+    imprime_nivel(nodo.izquierda, nivel - 1)
+    imprime_nivel(nodo.derecha, nivel - 1)
+
+
+    
+
+# altura = encontrar_altura(arbol)
+# for nivel in range(altura):
+#     imprime_nivel(arbol, nivel)
+#     print()
+
+
+# -------------------------------------------------------------------------------------
+
+def coincide(raiz, cabeza):
+
+    if raiz == None and cabeza == None:
+        return True
+    
+    def comparar(nodo_arbol, nodo_lista):
+
+        if nodo_arbol == None or nodo_lista == None:
+            return False
+
+        if nodo_arbol == None and nodo_lista == None:
+            return True
+        
+        if nodo_arbol.carga != nodo_lista.carga:
+            return False
+        
+        if (nodo_arbol.izquierda == None and nodo_arbol.derecha == None) and nodo_lista.siguiente == None:
+            return True
+        
+
+        return (comparar(nodo_arbol.izquierda, nodo_lista.siguiente) or 
+                comparar(nodo_arbol.derecha, nodo_lista.siguiente))
+    
+    return comparar(raiz, cabeza)
+
+
+
+lista = Lista_enlazada()
+
+# Insertar elementos
+lista.insertar_al_final(1)
+lista.insertar_al_final(2)
+lista.insertar_al_final(5)
+
+
+arbol = Arbol(1,
+        Arbol(2,
+            Arbol(4),
+            Arbol(5)
+        ),
+        Arbol(3)
+    )
+
+# print(coincide(arbol, lista.cabeza))
+
+# -------------------------------------------------------------------------------------
+
+def rama_larga(nodo):
+    if nodo is None:
+        return []
+
+    rama_izquierda = rama_larga(nodo.izquierda)
+    rama_derecha = rama_larga(nodo.derecha)
+
+    if len(rama_izquierda) > len(rama_derecha):
+        return [nodo.carga] + rama_izquierda
+    else:
+        return [nodo.carga] + rama_derecha
+
+
+
+arbol = Arbol('A', 
+                Arbol('B', 
+                        Arbol('D'), 
+                        Arbol('E', 
+                                None, 
+                                Arbol('G'))),
+                Arbol('C', 
+                        None, 
+                        Arbol('F')))
+'''
+           A
+         /   \
+        B     C
+       / \     \
+      D   E     F
+           \
+            G
+'''
+
+# print(rama_larga(arbol))
